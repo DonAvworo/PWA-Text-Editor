@@ -56,3 +56,15 @@ npm run start = cd into the root folder (server/routes/server.js) and run npm st
 npm run start:dev = concurrently \"cd client && npm run build\" \"cd server && npm run server\ (REQUIRES NPM INSTALL CONCURRENTLY)
 npm run server = cd into the server folder and run npm run server
 npm run client = cd into the client folder and run npm run client
+
+================================================================================================
+
+to run the app in production mode, run the following command
+npm run start:prod
+
+================================================================================================
+to quit the app, press ctrl + c:
+stop running app on port 3000
+stop running app on port 3001
+================================================================================================
+
