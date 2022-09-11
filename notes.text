@@ -1,0 +1,58 @@
+fix bug that caused thr app not to start
+===============================================
+npm --omit=dev install OR
+npm --omit=dev install --production OR 
+npm install --production OR
+npm install --production --no-optional --no-bin-links --no-package-lock --no-shrinkwrap
+
+OR 
+npm --include=dev install  OR
+npm --include=dev install --no-optional --no-bin-links --no-package-lock --no-shrinkwrap
+
+npm ci--only=production
+
+
+npm --omit=dev install  *USED IN THIS PROJECT*
+
+//NOTE : 
+it seems that npm ci is better than npm install for production environment
+this is because npm ci will not install any package that is not in package-lock.json
+npm install will install the latest version of the package that is not in package-lock.json
+
+npm ci --only=production
+
+when trying to run the app in production mode, the app will not start because of the following error
+npm WARN config production Use `--omit=dev` instead.
+ 
+The config setting `production` has been renamed to `omit=dev`. Please use the new name.
+to fix, change the production to omit=dev in package.json
+
+
+
+
+npm ERR! code EINVALIDTAGNAME
+npm ERR! Invalid tag name "dev": Tags may not have any characters that encodeURIComponent encodes.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /root/.npm/_logs/2020-05-06T13_44_53_000Z-debug.log
+
+//FIXME
+sh: webpack: command not found 
+to fix this, install webpack globally
+npm install webpack -g
+
+//FIXME 
+Error: EACCES: permission denied, mkdir '/usr/local/lib/node_modules/webpack
+to fix this, run the following command
+sudo chown -R $USER /usr/local/lib/node_modules OR
+sudo chown -R $USER /usr/local/lib/node_modules/webpack
+
+
+================================================================================================
+//START PROGRAM:
+npm install =  cd into the client folder and run npm install
+npm run build = cd into the client folder and run npm run build
+npm run start = cd into the root folder (server/routes/server.js) and run npm start
+npm run start:dev = concurrently \"cd client && npm run build\" \"cd server && npm run server\ (REQUIRES NPM INSTALL CONCURRENTLY)
+npm run server = cd into the server folder and run npm run server
+npm run client = cd into the client folder and run npm run client
